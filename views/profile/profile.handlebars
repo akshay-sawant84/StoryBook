@@ -1,0 +1,65 @@
+<div class="py-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <img src="{{user.image}}" alt="user image" class="user-image">
+                <h4 class="my-3">{{user.displayName}}</h4>
+                <div>
+                    <p class="px-2"><i class="fas fa-envelope"></i> {{user.email}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        {{#if content}}
+        <h3>Your Stories</h3>
+        {{!-- <li>
+            <h5><a href="/story/{{_id}}">{{title}}</a></h5>
+        </li> --}}
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each content}}
+                <tr>
+                    <th scope="row"><a href="/story/{{_id}}">{{title}}</a></th>
+                    <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm:ss a'}}</td>
+                    <td>{{status}}</td>
+                    <td>
+                        <div>
+                            <a class="mr-2 btn btn-warning" href="/edit/{{_id}}" role="button"><i
+                                    class="fas fa-edit"></i></a>
+                            <form class="d-inline" action="/story/{{_id}}?_method=DELETE" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button class="btn btn-danger" role="button"><i class="fas fa-trash"></i></button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {{else}}
+                {{/each}}
+            </tbody>
+        </table>
+        {{else}}
+        <h3 class="text-center">No Stories</h3>
+        {{/if}}
+    </div>
+</div>
+
+{{!-- <div>
+    <a class="mr-2 btn btn-warning" href="/edit/{{data._id}}" role="button"><i class="fas fa-edit"></i></a>
+    <form class="d-inline" action="/story/{{data._id}}?_method=DELETE" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="btn btn-danger" role="button"><i class="fas fa-trash"></i></button>
+    </form>
+</div> --}}

@@ -1,0 +1,36 @@
+{{#if stories}}
+<div class="p-3 text-center">
+  <h2>Stories</h2>
+</div>
+<div class="row">
+  {{#each stories}}
+  <div class="col-lg-4 my-2 align-items-stretch">
+    <div class="card h-100 text-center  pb-3 pt-4">
+      <div class="d-flex flex-column justtify-content-center align-items-center">
+        <h3 class="text-center px-3">{{title}}</h3>
+        <p class="px-4 py-2">{{stripTags (truncate description 150)}}</p>
+        <div class="author my-4">
+          <img src="{{user.image}}" alt="" class="author-img">
+          <div class="w-100 d-flex justify-content-center align-items-center">
+            <h6 class="d-inline px-2 align-middle m-0">{{user.displayName}}</h6>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: auto;">
+        <hr class="w-100">
+        <a class="btn btn-outline-success" href="/story/{{_id}}" role="button">Read More <i
+            class="px-1 fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+
+  </div>
+  {{else}}
+
+  {{/each}}
+</div>
+
+{{else}}
+<div class="p-3 text-center">
+  <h2>No Stories</h2>
+</div>
+{{/if}}
